@@ -1,0 +1,9 @@
+.EmptyBody {
+    justify-content: center;
+    height: 97vh;
+    display: flex;
+}
+
+p.body-text {
+    align-self: center;
+}
