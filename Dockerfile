@@ -2,10 +2,10 @@
 FROM node:13.12.0-alpine
 
 # set working directory
-WORKDIR /bandmates_web
+WORKDIR /app
 
 # add `/bandmates_web/node_modules/.bin` to $PATH
-ENV PATH /bandmates_web/node_modules/.bin:$PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY package.json ./
