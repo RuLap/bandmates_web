@@ -19,8 +19,7 @@ const MenuLinks = ({ isOpen }: MenuLinksProps) => {
             pt={[4, 4, 0, 0]}
         >
             <MenuItem href="/"></MenuItem>
-            <MenuItem href="/">Sosat</MenuItem>
-            <MenuItem>
+            <MenuItem href="https://youtu.be/dQw4w9WgXcQ?si=M1FHtdZDyJ-LzEWw">
                 <Button
                     size={"sm"}
                     rounded={"md"}
