@@ -6,7 +6,7 @@ const Logo = (props: BoxProps) => {
     <Box {...props} ml={10}>
       <Link to={"/"}>
         <Text fontSize={"30"} fontWeight={"700"}>
-            BandMates
+          BandMates
         </Text>
       </Link>
     </Box>

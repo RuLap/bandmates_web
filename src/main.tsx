@@ -11,8 +11,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ChakraProvider theme={customTheme}>
       <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ChakraProvider>
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
   </StrictMode>
 )
