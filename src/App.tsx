@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 import HomePage from './pages/home/HomePage'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
+import { Suspense } from 'react';
 
 function App() {
   return (
@@ -20,4 +21,10 @@ function App() {
   )
 }
 
-export default App
+export default function WrappedApp() {
+  return (
+    <Suspense fallback="...loading">
+      <App />
+    </Suspense>
+  )
+}

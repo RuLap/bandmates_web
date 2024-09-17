@@ -1,0 +1,18 @@
+{
+  "main": {
+    "webVersionIsUnavailable": "Веб версия приложения BandMates на данный момент недоступна "
+  },
+  "auth": {
+    "signIn": "Вход",
+    "signUp": "Регистрация",
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+    "forgotPassword": "Забыли пароль?",
+    "dontHaveAccount": "Нет аккаунта?",
+    "alreadyHaveAccount": "Уже есть аккаунт?",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "firstName": "Имя",
+    "lastName": "Фамилия"
+  }
+}

@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { Flex, Text } from '@chakra-ui/react'
 
 const HomePage = () => {
+  const { t } = useTranslation();
   return (
     <Flex
       w={"100%"}
@@ -15,10 +17,10 @@ const HomePage = () => {
         align={"center"}
         fontSize={"20"}
       >
-        Web version of BandMates App is currently unavailable. 
+        {t('main.webVersionIsUnavailable')}
       </Text>
     </Flex>
   )
 }
 
-export default HomePage
+export default HomePage;

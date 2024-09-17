@@ -2,6 +2,7 @@ import { Avatar, Box, Button, chakra, Flex, FormControl, FormHelperText, Heading
 import { Eye, EyeSlash, Lock, User } from 'iconic-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const IconUser = chakra(User);
 const IconLock = chakra(Lock);
@@ -10,7 +11,7 @@ const IconEyeSlash = chakra(EyeSlash);
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const { t } = useTranslation();
   const handleShowClick = () => setShowPassword(!showPassword);
   return (
     <Flex
@@ -29,7 +30,7 @@ const LoginPage = () => {
         alignItems={"center"}
       >
         <Avatar bg={"primary"} />
-        <Heading color={"primary"}>Sign In</Heading>
+        <Heading color={"primary"}>{t("auth.signIn")}</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack
@@ -60,7 +61,7 @@ const LoginPage = () => {
                   />
                   <Input
                     type={showPassword ? "text" : "password"}
-                    placeholder="Password"
+                    placeholder={t("auth.password")}
                     borderWidth={"2px"}
                   />
                   <InputRightElement>
@@ -78,24 +79,24 @@ const LoginPage = () => {
                   </InputRightElement>
                 </InputGroup>
                 <FormHelperText color={"secondary_fixed"} textAlign={"right"}>
-                  <Link to={"#"}>Forgot password?</Link>
+                  <Link to={"#"}>{t("auth.forgotPassword")}</Link>
                 </FormHelperText>
               </FormControl>
               <Button
                 type={"submit"}
                 variant={"solid"}
                 color={"primary"}
-                bgColor={"secondary"}
+                bgColor={"secondary_fixed"}
               >
-                Login
+                {t("auth.login")}
               </Button>
             </Stack>
           </form>
         </Box>
         <Box textColor={"primary"}>
-          Don't have account?{" "}
+          {t("auth.dontHaveAccount")}{" "}
           <Link to={"/register"}>
-            Sign Up
+            {t("auth.register")}
           </Link>
         </Box>
       </Stack>

@@ -10,7 +10,7 @@ const NavBarContainer = ({ children }: { children: React.ReactNode }, { ...props
       justify={"space-between"}
       wrap={"wrap"}
       w={"100%"}
-      p={5}
+      p={4}
       bg={"primary"}
       color={"secondary_fixed"}
       {...props}

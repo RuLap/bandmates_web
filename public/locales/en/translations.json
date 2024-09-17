@@ -1,0 +1,18 @@
+{
+  "main": {
+    "webVersionIsUnavailable": "Web version of BandMates App is currently unavailable. "
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot password?",
+    "dontHaveAccount": "Don't have account?",
+    "alreadyHaveAccount": "Already have account?",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "firstName": "First Name",
+    "lastName": "Last Name"
+  }
+}

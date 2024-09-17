@@ -7,6 +7,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import customTheme from "./utils/theme";
 import { BrowserRouter } from 'react-router-dom'
 
+import "./i18n/config.ts";
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ChakraProvider theme={customTheme}>

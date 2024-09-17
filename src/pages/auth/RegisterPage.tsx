@@ -2,6 +2,7 @@ import React from 'react'
 import { Avatar, Box, Button, chakra, Flex, FormControl, Heading, Input, InputGroup, InputLeftElement, InputRightElement, Stack, Text } from '@chakra-ui/react'
 import { Eye, EyeSlash, Lock, User, Text as TextIcon } from 'iconic-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const IconUser = chakra(User);
 const IconLock = chakra(Lock);
@@ -11,7 +12,7 @@ const IconText = chakra(TextIcon)
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const { t } = useTranslation();
   const handleShowClick = () => setShowPassword(!showPassword);
 
   return (
@@ -31,7 +32,7 @@ const RegisterPage = () => {
         alignItems={"center"}
       >
         <Avatar bg={"primary"} />
-        <Heading color={"primary"}>Sign Up</Heading>
+        <Heading color={"primary"}>{t("auth.signUp")}</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack
@@ -60,8 +61,7 @@ const RegisterPage = () => {
                     children={<IconText color={"secondary_fixed"} />}
                   />
                   <Input
-                    type={"email"}
-                    placeholder="First Name"
+                    placeholder={t("auth.firstName")}
                     borderWidth={"2px"}
                   />
                 </InputGroup>
@@ -73,8 +73,7 @@ const RegisterPage = () => {
                     children={<IconText color={"secondary_fixed"} />}
                   />
                   <Input
-                    type={"email"}
-                    placeholder="LastName"
+                    placeholder={t("auth.lastName")}
                     borderWidth={"2px"}
                   />
                 </InputGroup>
@@ -88,7 +87,7 @@ const RegisterPage = () => {
                   />
                   <Input
                     type={showPassword ? "text" : "password"}
-                    placeholder="Password"
+                    placeholder={t("auth.password")}
                     borderWidth={"2px"}
                   />
                   <InputRightElement>
@@ -115,7 +114,7 @@ const RegisterPage = () => {
                   />
                   <Input
                     type={showPassword ? "text" : "password"}
-                    placeholder="Confirm password"
+                    placeholder={t("auth.confirmPassword")}
                     borderWidth={"2px"}
                   />
                 </InputGroup>
@@ -124,17 +123,17 @@ const RegisterPage = () => {
                 type={"submit"}
                 variant={"solid"}
                 color={"primary"}
-                bgColor={"secondary"}
+                bgColor={"secondary_fixed"}
               >
-                Login
+                {t("auth.register")}
               </Button>
             </Stack>
           </form>
         </Box>
         <Box textColor={"primary"}>
-          Already have account?{" "}
+          {t("auth.alreadyHaveAccount")}{" "}
           <Link to={"/login"}>
-            Sign In
+            {t("auth.login")}
           </Link>
         </Box>
       </Stack>
