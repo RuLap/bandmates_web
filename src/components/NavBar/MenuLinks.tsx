@@ -1,15 +1,17 @@
+'use client'
+
 import { Box, Button, chakra, MenuItemProps, Stack } from '@chakra-ui/react'
 import MenuItem from './MenuItem'
 import { Gift } from 'iconic-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 interface MenuLinksProps extends MenuItemProps {
   isOpen: boolean
 }
 
-const IconUser = chakra(Gift);
+const IconUser = Gift;
 const MenuLinks = ({ isOpen }: MenuLinksProps) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -28,7 +30,7 @@ const MenuLinks = ({ isOpen }: MenuLinksProps) => {
             <IconUser />
           </Button>
         </MenuItem>
-        <MenuItem href="/login">
+        <MenuItem href="/auth/login">
           <Button
             size={"md"}
             rounded={"md"}
@@ -41,7 +43,7 @@ const MenuLinks = ({ isOpen }: MenuLinksProps) => {
             {t("auth.signIn")}
           </Button>
         </MenuItem>
-        <MenuItem href="/register">
+        <MenuItem href="/auth/register">
           <Button
             size={"md"}
             rounded={"md"}
