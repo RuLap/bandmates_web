@@ -28,6 +28,7 @@ const handler = NextAuth({
         const res = await fetch("https://api.bandmates.ru/api/users/login", {
           method: "POST",
           headers: {
+            "Accept": "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -46,15 +47,17 @@ const handler = NextAuth({
     })
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    jwt: async ({ token, user }) => {
       if(user) {
         token.user = user;
       }
 
-      return Promise.resolve(token);
+      return token;
     },
-    async session({ session, token }) {
-      session.user = token.user;
+    session: async ({ session, token }) => {
+      if(token) {
+        session.user = token.user;
+      }
       return session;
     }
   }
