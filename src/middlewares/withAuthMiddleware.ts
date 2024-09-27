@@ -10,8 +10,6 @@ if(!sessionPassword) throw new Error("SESSION_PASSWORD is not set");
 
 export function withAuthMiddleware(middleware: CustomMiddleware): CustomMiddleware {
   return async (request: NextRequest, event: NextFetchEvent, response: NextResponse) => {
-    debugger
-    console.log("middleware");
     const path = request.nextUrl.pathname;
     const isProtectedRoute = protectedRoutes.includes(path);
     const isPublicRoute = publicRoutes.includes(path);

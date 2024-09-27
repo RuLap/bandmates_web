@@ -2,7 +2,7 @@
 
 import { Avatar, Box, Button, chakra, Flex, FormControl, FormHelperText, Heading, Input, InputGroup, InputLeftElement, InputRightElement, Stack, Text } from '@chakra-ui/react'
 import { Eye, EyeSlash, Lock, User } from 'iconic-react';
-import React, { useState } from 'react';
+import React, { FormEventHandler, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@chakra-ui/next-js';
 import { signIn } from 'next-auth/react';
@@ -20,9 +20,10 @@ export default function LoginPage() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSubmit() {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
     try {
-      const res = await signIn("Credentials", { username: login, password: password });
+      const res = await signIn("Credentials", { username: login, password: password, redirect: false });
       if(res?.error) {
         console.log(res.error);
       }
@@ -108,6 +109,7 @@ export default function LoginPage() {
                 variant={"solid"}
                 color={"primary"}
                 bgColor={"secondary_fixed"}
+                onClick={handleSubmit}
               >
                 {t("auth.login")}
               </Button>

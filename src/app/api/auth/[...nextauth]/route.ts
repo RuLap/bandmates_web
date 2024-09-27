@@ -21,6 +21,7 @@ const handler = NextAuth({
       },
     
       async authorize(credentials) {
+        console.log(credentials);
         const { username, password } = credentials as {
           username: string;
           password: string;
@@ -28,7 +29,6 @@ const handler = NextAuth({
         const res = await fetch("https://api.bandmates.ru/api/users/login", {
           method: "POST",
           headers: {
-            "Accept": "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -37,6 +37,7 @@ const handler = NextAuth({
           }),
         });
         const user = await res.json();
+        console.log(user);
         if(res.ok && user) {
           return user;
         }
