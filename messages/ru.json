@@ -13,6 +13,7 @@
     "password": "Пароль",
     "confirmPassword": "Подтвердите пароль",
     "firstName": "Имя",
-    "lastName": "Фамилия"
+    "lastName": "Фамилия",
+    "signOut": "Выйти"
   }
 }

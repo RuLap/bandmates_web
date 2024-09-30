@@ -4,8 +4,8 @@ import { Avatar, Box, Button, chakra, Flex, FormControl, FormHelperText, Heading
 import { Eye, EyeSlash, Lock, User } from 'iconic-react';
 import React, { FormEventHandler, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@chakra-ui/next-js';
 import { signIn } from 'next-auth/react';
+import { Link } from '@chakra-ui/next-js';
 
 const IconUser = chakra(User);
 const IconLock = chakra(Lock);
@@ -23,7 +23,7 @@ export default function LoginPage() {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     try {
-      const res = await signIn("Credentials", { username: login, password: password, redirect: false });
+      const res = await signIn("credentials", { username: login, password: password, redirect: true, callbackUrl: "/home" });
       if(res?.error) {
         console.log(res.error);
       }
@@ -69,7 +69,7 @@ export default function LoginPage() {
                     type={"email"}
                     placeholder="Email"
                     borderWidth={"2px"}
-                    onChange={(e) => setLogin(e.target.value)}
+                    onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setLogin(e.target.value)}
                   />
                 </InputGroup>
               </FormControl>
@@ -84,7 +84,7 @@ export default function LoginPage() {
                     type={showPassword ? "text" : "password"}
                     placeholder={t("auth.password")}
                     borderWidth={"2px"}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
                   />
                   <InputRightElement>
                     <Button
@@ -109,7 +109,6 @@ export default function LoginPage() {
                 variant={"solid"}
                 color={"primary"}
                 bgColor={"secondary_fixed"}
-                onClick={handleSubmit}
               >
                 {t("auth.login")}
               </Button>

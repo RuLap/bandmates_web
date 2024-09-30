@@ -3,7 +3,7 @@ import { CustomMiddleware } from "./chain";
 import { getSession } from "@/services/authentication/cookie-session";
 
 const protectedRoutes = ['/home'];
-const publicRoutes = ['/', '/login', '/register'];
+const publicRoutes = ['/', '/auth/login', '/auth/register'];
 
 const sessionPassword = process.env.SESSION_PASSWORD as string;
 if(!sessionPassword) throw new Error("SESSION_PASSWORD is not set");
@@ -20,14 +20,10 @@ export function withAuthMiddleware(middleware: CustomMiddleware): CustomMiddlewa
       return NextResponse.redirect(new URL('/login', request.nextUrl));
     }
 
-    if(isPublicRoute && user && !request.nextUrl.pathname.startsWith('/home')) {
-      //return NextResponse.redirect(new URL('/home', request.nextUrl));
+    if(isPublicRoute && user) {
+      return NextResponse.redirect(new URL('/home', request.nextUrl));
     }  
 
-    return middleware(request, event, response);
+    return NextResponse.next();
   }
-}
-
-export const config = {
-  matcher: '/((?!api|_next/static|_next/image|favicon.ico|login).*)',
 }

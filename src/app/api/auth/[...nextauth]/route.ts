@@ -1,3 +1,4 @@
+import { setSession } from "@/services/authentication/cookie-session";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -13,15 +14,15 @@ const handler = NextAuth({
 
   providers: [
     CredentialsProvider({
-      name: "Credentials",
-      type: "credentials",
       credentials: {
         username: { },
         password: { },
       },
     
       async authorize(credentials) {
-        console.log(credentials);
+        if(!credentials?.username || !credentials.password) {
+          return null;
+        }
         const { username, password } = credentials as {
           username: string;
           password: string;
@@ -37,7 +38,6 @@ const handler = NextAuth({
           }),
         });
         const user = await res.json();
-        console.log(user);
         if(res.ok && user) {
           return user;
         }
@@ -61,7 +61,7 @@ const handler = NextAuth({
       }
       return session;
     }
-  }
+  },
 });
 
 export { handler as GET, handler as POST };

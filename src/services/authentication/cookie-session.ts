@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { sealData, unsealData } from 'iron-session';
 import { User } from "next-auth";
 
+
 const sessionPassword = process.env.SESSION_PASSWORD as string;
 if(!sessionPassword) throw new Error("SESSION_PASSWORD is not set");
 
@@ -23,7 +24,7 @@ export async function setSession(user: User) : Promise<void> {
 
     cookies().set('auth_session', encryptedSession, {
         sameSite: 'strict',
-        httpOnly: false,
-        secure: true
+        httpOnly: true,
+        //secure: true
     });
 }
