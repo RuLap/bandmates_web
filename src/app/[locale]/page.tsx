@@ -1,6 +1,6 @@
 'use client'
 
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import {redirect} from 'next/navigation';
 
@@ -10,10 +10,15 @@ export default function Home() {
     redirect('/home');
   }
   else {
-    return <Text paddingTop={"200px"}>Hello</Text>
+    return <Box h={'calc(100vh)'} w={'100%'} bgColor={'secondary'} alignContent={'center'}>
+      <Text
+        align={'center'}
+        color={"secondary_fixed"}
+        fontSize={24}
+        fontWeight={600}
+      >
+        The full functionality of BandMates web version is currently unavailable.
+      </Text>
+    </Box>
   }
-
-  return (
-    <Text paddingTop={"100px"}>Hello</Text>
-  );
 }

@@ -9,14 +9,14 @@ const UserRow = ({ user }: { user: User }) => {
         padding={'10px'}
         direction={{ base: 'column', sm: 'row' }}
         overflow={'hidden'}
-        variant={'outline'}  
+        bgColor={'primary'}  
       >
         <Avatar src={user.photoUrl} size={'xl'} />
 
         <Stack>
           <CardBody>
-            <Heading size={'md'}>{user.firstName} {user.lastName}</Heading>
-            <Text py={'1'}>{user.email}</Text>
+            <Heading color={'secondary_fixed'} size={'md'}>{user.firstName} {user.lastName}</Heading>
+            <Text color={'secondary_fixed'} py={'1'}>{user.email}</Text>
           </CardBody>
         </Stack>
       </Card>
